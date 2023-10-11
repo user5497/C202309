@@ -4,10 +4,11 @@
 long multif(int value);
 
 // 세 가지 경우를 출력할 main()을 선언합니다. 
-void main() {
-	printf("1부터 2까지의 곱은 %d\n", multif(2));
-	printf("1부터 3까지의 곱은 %d\n", multif(3));
-	printf("1부터 5까지의 곱은 %d\n", multif(5));
+int main() {
+	printf("1부터 2까지의 곱은 %ld\n", multif(2));
+	printf("1부터 3까지의 곱은 %ld\n", multif(3));
+	printf("1부터 5까지의 곱은 %ld\n", multif(5));
+	return 0;
 }
 
 // 팩토리얼 연산을 수행할 함수 multif()를 선언합니다. 

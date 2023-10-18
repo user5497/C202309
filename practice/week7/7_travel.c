@@ -2,17 +2,15 @@
 #define NUMCITY 3
 #define NUMPEOPLE 2
 
-// 2차원 배열 names와 cities 생성
-char names[NUMPEOPLE][10];
+// 전역변수로 도시명과 사람이름을 저장할 배열을 생성합니다. 
 char cities[NUMCITY][10];
+char names[NUMPEOPLE][10];
 
 void calculateTravelDays();
 
 int main() {
-
-	//사용자로부터 도시 이름 입력받기
-	// NUMCITY 수만큼 cities에 도시 이름을 입력받습니다.
-	printf("%d개의 도시명을 차례대로 입력해주세요.\n", NUMCITY);
+	// 사용자로부터 도시 이름 입력받기
+	printf("%d개의 도시명을 차례대로 입력해주세요. \n", NUMCITY);
 	for (int i = 0; i < NUMCITY; i++) {
 		scanf_s("%s", cities[i], (int)sizeof(cities[i]));
 	}
@@ -24,15 +22,14 @@ int main() {
 	}
 
 	// 함수 호출
-	calculateTravelDays();
+	calculateTravelDays(names);
 
 	return 0;
 }
 
 void calculateTravelDays() {
-	// 2차원 배열 travelDays 선언
 	int travelDays[NUMCITY][NUMPEOPLE];
-	
+
 	// 각 도시에서 각 사람이 보낸 일 수 입력받기
 	for (int i = 0; i < NUMCITY; i++) {
 		for (int j = 0; j < NUMPEOPLE; j++) {
@@ -43,11 +40,12 @@ void calculateTravelDays() {
 
 	// 각 도시별 총 일 수 및 평균 일 수 계산 및 출력
 	for (int i = 0; i < NUMCITY; i++) {
-		int totalDays = 0;
+		int sum = 0;
+		float average = 0;
 		for (int j = 0; j < NUMPEOPLE; j++) {
-			totalDays += travelDays[i][j];
+			sum += travelDays[i][j];
 		}
-		float averageDays = (float)totalDays / NUMPEOPLE;
-		printf("도시 %s에서 보낸 총 일수: %d, 평균 일 수: %.2f\n", cities[i], totalDays, averageDays);
+		average = (float)sum / (float)NUMPEOPLE;
+		printf("도시 %s에서 보낸 총 일수: %d, 평균 일 수: %.2f\n", cities[i], sum,average);
 	}
 }
